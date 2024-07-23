@@ -1,0 +1,19 @@
+[package]
+name = "crypto_victim"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[features]
+rsa = ['librsa-ffi-sys']
+
+[dependencies]
+libaugury-ffi-sys = { path = "../libaugury-ffi-sys" }
+librsa-ffi-sys = { path = "../librsa-ffi-sys", optional=true }
+mmap-rs = { git = "https://github.com/StephanvanSchaik/mmap-rs", rev = "793a012" }
+rand = "0.8"
+
+[profile.release.package.libaugury-ffi-sys]
+opt-level = 0
